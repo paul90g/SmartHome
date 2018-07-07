@@ -26,6 +26,7 @@
 
     <modules>
         <module>DiscoveryService</module>
+        <module>HouseStatusService</module>
     </modules>
 
     <dependencies>
