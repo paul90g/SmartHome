@@ -27,6 +27,7 @@
     <modules>
         <module>DiscoveryService</module>
         <module>HouseStatusService</module>
+        <module>WebService</module>
     </modules>
 
     <dependencies>
