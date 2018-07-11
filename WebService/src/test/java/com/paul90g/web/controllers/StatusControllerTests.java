@@ -1,6 +1,7 @@
 package com.paul90g.web.controllers;
 
 import feign.Response;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +39,7 @@ public class StatusControllerTests {
         assertEquals(HELLO_REQUEST_TEST_VAL, Integer.parseInt(responseBody));
     }
 
-    private String readInputStream(InputStream is) {
+    private String readInputStream(@NonNull InputStream is) {
         StringBuilder sb = new StringBuilder();
         try (Reader reader = new BufferedReader(new InputStreamReader(is))) {
             int c;
