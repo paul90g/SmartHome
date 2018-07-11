@@ -39,17 +39,14 @@ public class StatusControllerTests {
         assertEquals(HELLO_REQUEST_TEST_VAL, Integer.parseInt(responseBody));
     }
 
-    private String readInputStream(@NonNull InputStream is) {
+    private String readInputStream(@NonNull InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder();
-        try (Reader reader = new BufferedReader(new InputStreamReader(is))) {
-            int c;
-            while ((c = reader.read()) != -1) {
-                sb.append((char) c);
-            }
-        } catch (IOException e) {
-            log.error("IOException thrown when reading the input stream in a test!");
-            e.printStackTrace();
+        Reader reader = new BufferedReader(new InputStreamReader(is));
+        int c;
+        while ((c = reader.read()) != -1) {
+            sb.append((char) c);
         }
+        is.close();
         return sb.toString();
     }
 
