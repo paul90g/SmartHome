@@ -3,22 +3,22 @@ package com.paul90g.web.controllers;
 import feign.Response;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 @Slf4j
 @SpringBootTest
-@RunWith(SpringRunner.class)
-public class StatusControllerTests {
+@ExtendWith(SpringExtension.class)
+class StatusControllerTests {
 
     private static final int HELLO_REQUEST_TEST_VAL = 7;
 
@@ -26,7 +26,7 @@ public class StatusControllerTests {
     private StatusController statusController;
 
     @Test
-    public void helloRequestTest() throws IOException {
+    void helloRequestTest() throws IOException {
         Response response = statusController.helloRequest(HELLO_REQUEST_TEST_VAL);
         log.info("Called \"helloRequest\" from the HouseStatusService!");
         log.info("Response received: {}", response);
@@ -39,6 +39,13 @@ public class StatusControllerTests {
         assertEquals(HELLO_REQUEST_TEST_VAL, Integer.parseInt(responseBody));
     }
 
+    /**
+     * Read all the data from an {@link InputStream} and convert it into a {@link String}
+     *
+     * @param is the {@link InputStream} to read data from
+     * @return A {@link String} containing everything that was read from the input stream
+     * @throws IOException thrown if there is an IO error with the data stream
+     */
     private String readInputStream(@NonNull InputStream is) throws IOException {
         StringBuilder sb = new StringBuilder();
         Reader reader = new BufferedReader(new InputStreamReader(is));
