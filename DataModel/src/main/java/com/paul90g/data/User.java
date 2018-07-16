@@ -23,19 +23,24 @@ public class User {
     private User() {
     }
 
+    /**
+     * Build a new User instance with all the fields set.
+     * If the data provided is not valid, an {@link InvalidDataException} will be thrown!
+     *
+     * @param username  username specific to the represented user
+     * @param firstName User's first name
+     * @param lastName  User's last name
+     * @param password  User's password, not encoded
+     * @param email     User's email
+     */
     public User(String username, String firstName, String lastName,
                 String password, String email) {
-        if (username.isEmpty() || !username.matches(REGEX_USERNAME))
-            throw new InvalidDataException("Invalid username format!");
         this.username = username.toLowerCase();
-        if (firstName.isEmpty()) throw new InvalidDataException("Invalid first name!");
         this.firstName = firstName;
-        if (lastName.isEmpty()) throw new InvalidDataException("Invalid last name!");
         this.lastName = lastName;
-        if (password.isEmpty()) throw new InvalidDataException("Invalid password!");
         this.password = password;
-        if (email.isEmpty() || !email.matches(REGEX_EMAIL)) throw new InvalidDataException("Invalid email format!");
         this.email = email.toLowerCase();
+        if (!isValid()) throw new InvalidDataException("Invalid data!");
     }
 
     public String getUsername() {
@@ -56,6 +61,14 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    private boolean isValid() {
+        if (username.isEmpty() || !username.matches(REGEX_USERNAME)) return false;
+        if (firstName.isEmpty()) return false;
+        if (lastName.isEmpty()) return false;
+        if (password.isEmpty()) return false;
+        return !email.isEmpty() && email.matches(REGEX_EMAIL);
     }
 
 }
