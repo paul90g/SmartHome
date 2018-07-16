@@ -2,6 +2,7 @@ package com.paul90g.data;
 
 import com.paul90g.exceptions.InvalidDataException;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -22,7 +23,16 @@ class UserTests {
 
     @BeforeAll
     static void init() {
-        log.info("Testing \"User\" data model");
+        log.info("\n\n*****************************\n"
+                + "Testing \"User\" data model\n"
+                + "*****************************\n");
+    }
+
+    @AfterAll
+    static void deInit() {
+        log.info("\n\n*****************************\n"
+                + "Tests for \"User\" are complete\n"
+                + "*****************************\n");
     }
 
     @Test

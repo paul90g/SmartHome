@@ -25,6 +25,7 @@ public class User {
 
     /**
      * Build a new User instance with all the fields set.
+     * <br>
      * If the data provided is not valid, an {@link InvalidDataException} will be thrown!
      *
      * @param username  username specific to the represented user
