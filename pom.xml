@@ -6,7 +6,7 @@
 
     <groupId>com.paul90g</groupId>
     <artifactId>SmartHome</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -25,6 +25,7 @@
     </properties>
 
     <modules>
+        <module>DataModel</module>
         <module>DiscoveryService</module>
         <module>HouseStatusService</module>
         <module>WebService</module>
@@ -42,6 +43,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
 
