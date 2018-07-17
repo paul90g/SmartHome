@@ -39,6 +39,7 @@ class UserTests {
     void testUserOk() {
         log.info("Test valid user creation");
         User user = new User(USERNAME, FIRST_NAME, LAST_NAME, PASSWORD, EMAIL);
+        log.info("User: {}", user.toString());
         assertNotNull(user);
         log.info("Test OK");
     }
@@ -56,6 +57,14 @@ class UserTests {
         log.info("Testing user creation with invalid username");
         Executable exec = () -> new User(BAD_USERNAME, FIRST_NAME, LAST_NAME, PASSWORD, EMAIL);
         assertThrows(InvalidDataException.class, exec);
+        log.info("Test OK");
+    }
+
+    @Test
+    void testUserNullParameter() {
+        log.info("Testing user creation with a null parameter");
+        Executable exec = () -> new User(USERNAME, FIRST_NAME, null, PASSWORD, EMAIL);
+        assertThrows(NullPointerException.class, exec);
         log.info("Test OK");
     }
 

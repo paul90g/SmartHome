@@ -1,23 +1,22 @@
 package com.paul90g.data;
 
 import com.paul90g.exceptions.InvalidDataException;
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import lombok.ToString;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
+@ToString
+@EqualsAndHashCode
 public class User {
 
     private static final String REGEX_USERNAME = "[a-zA-Z][a-zA-Z0-9]{1,20}";
     private static final String REGEX_EMAIL = "[a-zA-Z][a-zA-Z0-9]{2,20}@[a-zA-Z0-9.]{2,20}\\.[a-z]{2,3}";
 
-    @NonNull
     private String username;
-    @NonNull
     private String firstName;
-    @NonNull
     private String lastName;
-    @NonNull
     private String password;
-    @NonNull
     private String email;
 
     private User() {
@@ -34,8 +33,9 @@ public class User {
      * @param password  User's password, not encoded
      * @param email     User's email
      */
-    public User(String username, String firstName, String lastName,
-                String password, String email) {
+    public User(@NonNull String username, @NonNull String firstName,
+                @NonNull String lastName, @NonNull String password,
+                @NonNull String email) {
         this.username = username.toLowerCase();
         this.firstName = firstName;
         this.lastName = lastName;
